@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.express as px
 
 # Configurar la API de Notion
-NOTION_API_KEY = st.secrets["NOTION_API_KEYntn_143925415892CWpAIVqUoXjBXbzDtu16fAWBwmJwJ568i5"]  # Se leerá desde Streamlit Secrets
+NOTION_API_KEY = st.secrets["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"]  # Se leerá desde Streamlit Secrets
 DATABASE_ID = st.secrets["18b359dcc19580e69c2bd70d6ac384a3"]  # Se leerá desde Streamlit Secrets
 
 # Función para obtener datos de Notion
