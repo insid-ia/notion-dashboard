@@ -41,9 +41,9 @@ def parse_notion_data(data):
         nombre = props.get("Nombre", {}).get("title", [])
         nombre = nombre[0]["text"]["content"] if nombre else "Sin Nombre"
         
-        estado = props.get("Estado", {}).get("select", {})
-        estado = estado.get("name", "Sin Estado")
-        
+        estado = props.get("Estado", {}).get("status", {})
+        estado = estado.get("name", "Sin Estado") if estado else "Sin Estado"
+
         valor = props.get("Valor", {}).get("number", 0)
         
         fecha_estimada = props.get("Fecha Estimada de Cierre", {}).get("date", {})
