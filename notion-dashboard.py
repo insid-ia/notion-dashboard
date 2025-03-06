@@ -16,10 +16,12 @@ def get_notion_data():
         "Content-Type": "application/json"
     }
     response = requests.post(url, headers=headers)
+    
     if response.status_code == 200:
         return response.json()
     else:
-        st.error("Error al obtener datos de Notion")
+        st.error(f"Error al obtener datos de Notion: {response.status_code}")
+        st.json(response.json())  # Muestra el error en la interfaz para depuración
         return None
 
 # Procesar los datos en un DataFrame
