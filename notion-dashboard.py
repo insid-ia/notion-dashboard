@@ -29,12 +29,13 @@ def parse_notion_data(data):
     proyectos = []
     for result in data["results"]:
         props = result["properties"]
+        
         proyectos.append({
-            "Nombre": props["Nombre"]["title"][0]["text"]["content"] if props["Nombre"]["title"] else "",
-            "Estado": props["Estado"]["select"]["name"] if props["Estado"]["select"] else "",
-            "Valor": props["Valor"]["number"] if props["Valor"]["number"] else 0,
-            "Fecha Estimada Cierre": props["Fecha Estimada de Cierre"]["date"]["start"] if props["Fecha Estimada de Cierre"]["date"] else "",
-            "Fecha Real Cierre": props["Fecha Real de Cierre"]["date"]["start"] if props["Fecha Real de Cierre"]["date"] else ""
+            "Nombre": props["Nombre"]["title"][0]["text"]["content"] if "Nombre" in props and props["Nombre"]["title"] else "",
+            "Estado": props["Estado"]["select"]["name"] if "Estado" in props and props["Estado"]["select"] else "Sin Estado",
+            "Valor": props["Valor"]["number"] if "Valor" in props and props["Valor"]["number"] else 0,
+            "Fecha Estimada Cierre": props["Fecha Estimada de Cierre"]["date"]["start"] if "Fecha Estimada de Cierre" in props and props["Fecha Estimada de Cierre"]["date"] else "",
+            "Fecha Real Cierre": props["Fecha Real de Cierre"]["date"]["start"] if "Fecha Real de Cierre" in props and props["Fecha Real de Cierre"]["date"] else ""
         })
     return pd.DataFrame(proyectos)
 
